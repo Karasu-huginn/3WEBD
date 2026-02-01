@@ -4,7 +4,7 @@ export async function getRecentChanges(
   limit: number = 10,
 ): Promise<RecentChange[]> {
   const response = await fetch(
-    `https://openlibrary.org/recentchanges.json?limit=${limit}`,
+    `https://openlibrary.org/recentchanges.json?limit=${limit}&bot=false`,
   );
 
   if (!response.ok) {
