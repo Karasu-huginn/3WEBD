@@ -1,34 +1,14 @@
-import type { RecentChange } from "../types";
+import type { Book, RecentChange, SearchBooks } from "../types";
+import { fetchAPI } from "./client";
 
-export async function getRecentChanges(
-  limit: number = 10,
-): Promise<RecentChange[]> {
-  const response = await fetch(
-    `https://openlibrary.org/recentchanges.json?limit=${limit}&bot=false`,
-  );
-
-  if (!response.ok) {
-    throw new Error(`Erreur API: ${response.status}`);
-  }
-  return response.json();
+export function getRecentChanges(limit: number = 10): Promise<RecentChange[]> {
+  return fetchAPI(`/recentchanges.json?limit=${limit}&bot=false`);
 }
 
-export async function getBookTitle(bookKey: string) {
-  const response = await fetch(`https://openlibrary.org${bookKey}.json`);
-
-  if (!response.ok) {
-    throw new Error(`Erreur API: ${response.status}`);
-  }
-  return response.json();
+export function getBookTitle(bookKey: string): Promise<Book> {
+  return fetchAPI(`${bookKey}.json`);
 }
 
-export async function getSearchBooks(query: string) {
-  const response = await fetch(
-    `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=24`,
-  );
-
-  if (!response.ok) {
-    throw new Error(`Erreur API: ${response.status}`);
-  }
-  return response.json();
+export function getSearchBooks(query: string): Promise<SearchBooks> {
+  return fetchAPI(`/search.json?q=${encodeURIComponent(query)}&limit=24`);
 }

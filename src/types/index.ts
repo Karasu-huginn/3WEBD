@@ -79,3 +79,38 @@ export type EbookAccess =
   | "no_ebook"
   | "printdisabled"
   | "public";
+
+//Book
+export interface Book {
+  title: string;
+  authors: Type[];
+  publish_date: string;
+  publishers: string[];
+  languages: Type[];
+  publish_country: string;
+  by_statement: string;
+  type: Type;
+  source_records: string[];
+  key: string;
+  works: Type[];
+  identifiers: unknown;
+  covers: number[];
+  isbn_10: string[];
+  series: string[];
+  description: Created;
+  physical_format: string;
+  number_of_pages: number;
+  latest_revision: number;
+  revision: number;
+  created: Created;
+  last_modified: Created;
+}
+
+export interface Type {
+  key: string;
+}
+
+export interface Created {
+  type: string;
+  value: string;
+}
