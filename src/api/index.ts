@@ -21,3 +21,14 @@ export async function getBookTitle(bookKey: string) {
   }
   return response.json();
 }
+
+export async function getSearchBooks(query: string) {
+  const response = await fetch(
+    `https://openlibrary.org/search.json?q=${query}&limit=24`,
+  );
+
+  if (!response.ok) {
+    throw new Error(`Erreur API: ${response.status}`);
+  }
+  return response.json();
+}

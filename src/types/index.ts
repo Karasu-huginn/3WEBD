@@ -38,3 +38,44 @@ export type Kind =
   | "update"
   | "merge-works"
   | "merge-authors";
+
+// Search Books
+export interface SearchBooks {
+  numFound: number;
+  start: number;
+  numFoundExact: boolean;
+  num_found: number;
+  documentation_url: string;
+  q: string;
+  offset: null;
+  docs: Doc[];
+}
+
+export interface Doc {
+  author_key?: string[];
+  author_name?: string[];
+  cover_edition_key?: string;
+  cover_i?: number;
+  ebook_access: EbookAccess;
+  edition_count: number;
+  first_publish_year?: number;
+  has_fulltext: boolean;
+  ia?: string[];
+  ia_collection?: string[];
+  key: string;
+  language?: string[];
+  lending_edition_s?: string;
+  lending_identifier_s?: string;
+  public_scan_b: boolean;
+  title: string;
+  subtitle?: string;
+  id_standard_ebooks?: string[];
+  id_librivox?: string[];
+  id_project_gutenberg?: string[];
+}
+
+export type EbookAccess =
+  | "borrowable"
+  | "no_ebook"
+  | "printdisabled"
+  | "public";
