@@ -26,7 +26,7 @@ const Home = () => {
         <div className="mt-5 w-full border rounded-2xl border-gray-400">
           {isPending ? (
             <div className="flex items-center justify-center p-8">
-              <p className="text-gray-500">Chargement...</p>
+              <p className="text-gray-500">Loading...</p>
             </div>
           ) : error ? (
             <div className="flex items-center justify-center p-8">
