@@ -6,7 +6,7 @@ const Search = () => {
   const query = searchParams.get("q") || "";
 
   const { data, isLoading, error } = useSearchBooks(query);
-  console.log(data?.docs);
+
   if (!query) {
     return (
       <div className="p-8">

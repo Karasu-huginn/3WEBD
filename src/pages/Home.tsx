@@ -3,7 +3,7 @@ import { useRecentChanges } from "../hooks/useRecentChanges";
 
 const Home = () => {
   const { data, isPending, error } = useRecentChanges(10);
-  console.log(data);
+
   const timeAgo = (timestamp: string) => {
     const minutes = Math.floor(
       (new Date().getTime() - new Date(timestamp).getTime()) / 60000,
@@ -14,6 +14,7 @@ const Home = () => {
     const isOneHour = hours === 1 ? true : false;
     return `${hours} ${isOneHour ? "hour" : "hours"}`;
   };
+
   return (
     <div className="min-h-screen md:px-30 px-10 md:py-20 py-10">
       {/**Recent Changes */}

@@ -12,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="search" element={<Search />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/advanced-search" element={<AdvancedSearch />} />
           <Route path="/book/*" element={<BookDetail />} />
         </Routes>

@@ -7,5 +7,6 @@ export function useSearchBooks(query: string) {
     queryKey: ["searchBooks", query],
     queryFn: () => getSearchBooks(query),
     staleTime: 5 * 60 * 1000, // 5 minutes
+    enabled: !!query,
   });
 }

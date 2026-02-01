@@ -24,7 +24,7 @@ export async function getBookTitle(bookKey: string) {
 
 export async function getSearchBooks(query: string) {
   const response = await fetch(
-    `https://openlibrary.org/search.json?q=${query}&limit=24`,
+    `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=24`,
   );
 
   if (!response.ok) {

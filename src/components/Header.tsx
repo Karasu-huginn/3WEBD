@@ -1,11 +1,11 @@
-import { useState, type ChangeEvent } from "react";
+import { useState, type SubmitEventHandler } from "react";
 import { Link, useNavigate } from "react-router";
 
 const Header = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-  const handleSearch = (e: ChangeEvent) => {
+  const handleSearch: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     if (query.trim()) {
       navigate(`/search?q=${encodeURIComponent(query.trim())}`);
