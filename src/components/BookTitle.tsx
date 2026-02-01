@@ -1,13 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { useBook } from "../hooks/useBook";
 
 const BookTitle = ({ bookKey }: { bookKey: string }) => {
-  const { isPending, error, data } = useQuery({
-    queryKey: ["book", bookKey],
-    queryFn: async () => {
-      const res = await fetch(`https://openlibrary.org${bookKey}.json`);
-      return res.json();
-    },
-  });
+  const { isPending, error, data } = useBook(bookKey);
+
   if (isPending) return <span className="text-gray-400">Chargement...</span>;
   if (error) return <span className="text-red-500">Erreur de chargement</span>;
   if (!data) return <span className="text-gray-400">Aucune donnée</span>;

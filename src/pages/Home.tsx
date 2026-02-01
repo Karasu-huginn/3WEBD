@@ -1,28 +1,9 @@
 import BookTitle from "../components/BookTitle";
+import { useRecentChanges } from "../hooks/useRecentChanges";
 
 const Home = () => {
-  const changesData = [
-    {
-      id: "164764179",
-      kind: "edit-book",
-      timestamp: "2026-02-01T10:36:16.301794",
-      comment: "import existing book",
-      changes: [{ key: "/books/OL34931546M", revision: 3 }],
-      author: { key: "/people/horncBot" },
-      ip: null,
-      data: {},
-    },
-    {
-      id: "164764178",
-      kind: "edit-book",
-      timestamp: "2026-02-01T10:36:14.913921",
-      comment: "import existing book",
-      changes: [{ key: "/books/OL47962146M", revision: 2 }],
-      author: { key: "/people/horncBot" },
-      ip: null,
-      data: {},
-    },
-  ];
+  const { data, isPending, error } = useRecentChanges(10);
+  console.log(data);
   const timeAgo = (timestamp: string) => {
     const minutes = Math.floor(
       (new Date().getTime() - new Date(timestamp).getTime()) / 60000,
@@ -42,7 +23,19 @@ const Home = () => {
 
         {/**Card */}
         <div className="mt-5 w-full border rounded-2xl border-gray-400">
-          {changesData.length === 0 ? (
+          {isPending ? (
+            <div className="flex items-center justify-center p-8">
+              <p className="text-gray-500">Chargement...</p>
+            </div>
+          ) : error ? (
+            <div className="flex items-center justify-center p-8">
+              <p className="text-red-500">
+                {error instanceof Error
+                  ? error.message
+                  : "Une erreur est survenue"}
+              </p>
+            </div>
+          ) : !data ? (
             <div className="flex items-center justify-center">
               <p>No recent changes</p>
             </div>
@@ -57,7 +50,7 @@ const Home = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {changesData.map((change) => (
+                  {data.map((change) => (
                     <tr
                       key={change.id}
                       className="border-b border-gray-200 hover:bg-gray-50"
