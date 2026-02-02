@@ -1,21 +1,9 @@
 import BookTitle from "../components/BookTitle";
 import { useRecentChanges } from "../hooks/useRecentChanges";
+import { timeAgo } from "../utils/timeago";
 
 const Home = () => {
   const { data, isPending, error } = useRecentChanges(10);
-
-  const timeAgo = (timestamp: string) => {
-    const minutes = Math.floor(
-      (new Date().getTime() - new Date(timestamp).getTime()) / 60000,
-    );
-    const isOneMinute = minutes === 1 ? true : false;
-    if (minutes < 60) {
-      return `${minutes} ${isOneMinute ? "minute" : "minutes"}`;
-    }
-    const hours = Math.floor(minutes / 60);
-    const isOneHour = hours === 1 ? true : false;
-    return `${hours} ${isOneHour ? "hour" : "hours"}`;
-  };
 
   return (
     <div className="min-h-screen md:px-30 px-10 md:py-20 py-10">
