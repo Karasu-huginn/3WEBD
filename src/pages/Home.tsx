@@ -1,6 +1,6 @@
 import BookTitle from "../components/BookTitle";
 import { useRecentChanges } from "../hooks/useRecentChanges";
-import { timeAgo } from "../utils/timeago";
+import { timeAgo } from "../utils/timeAgo";
 
 const Home = () => {
   const { data, isPending, error } = useRecentChanges(10);

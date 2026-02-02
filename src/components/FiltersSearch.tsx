@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { filterFields } from "../utils/filterFields";
 
 const FiltersSearch = () => {
   const navigate = useNavigate();
@@ -13,28 +14,6 @@ const FiltersSearch = () => {
     language: "",
   });
 
-  const filterFields = [
-    { name: "title", label: "Title", placeholder: "e.g., Naruto" },
-    {
-      name: "author",
-      label: "Author",
-      placeholder: "e.g., Stendhal",
-    },
-    {
-      name: "subject",
-      label: "Subject",
-      placeholder: "e.g., Anime",
-    },
-    {
-      name: "publisher",
-      label: "Publisher",
-      placeholder: "e.g., Penguin Books",
-    },
-    { name: "year", label: "Publication Year", placeholder: "e.g., 2021" },
-    { name: "isbn", label: "ISBN", placeholder: "e.g., 9780743273565" },
-    { name: "language", label: "Language", placeholder: "e.g., eng, fra" },
-  ];
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
@@ -43,18 +22,20 @@ const FiltersSearch = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const queryParts: string[] = [];
-    if (filters.title) queryParts.push(`title:${filters.title}`);
-    if (filters.author) queryParts.push(`author:${filters.author}`);
-    if (filters.subject) queryParts.push(`subject:${filters.subject}`);
-    if (filters.publisher) queryParts.push(`publisher:${filters.publisher}`);
-    if (filters.year) queryParts.push(`first_publish_year:${filters.year}`);
-    if (filters.isbn) queryParts.push(`isbn:${filters.isbn}`);
-    if (filters.language) queryParts.push(`language:${filters.language}`);
+    const query = [
+      filters.title && `title:${filters.title}`,
+      filters.author && `author:${filters.author}`,
+      filters.subject && `subject:${filters.subject}`,
+      filters.publisher && `publisher:${filters.publisher}`,
+      filters.year && `first_publish_year:${filters.year}`,
+      filters.isbn && `isbn:${filters.isbn}`,
+      filters.language && `language:${filters.language}`,
+    ]
+      .filter(Boolean)
+      .join(" AND ");
 
-    const query = queryParts.join(" AND ");
     if (query) {
-      navigate(`/search?q=${encodeURIComponent(query)}`);
+      navigate(`/advanced-search/?q=${encodeURIComponent(query)}`);
     }
   };
 
