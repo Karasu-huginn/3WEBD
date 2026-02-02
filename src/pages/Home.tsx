@@ -9,7 +9,9 @@ const Home = () => {
       (new Date().getTime() - new Date(timestamp).getTime()) / 60000,
     );
     const isOneMinute = minutes === 1 ? true : false;
-    if (minutes < 60) return `${minutes} ${isOneMinute ? "minute" : "minutes"}`;
+    if (minutes < 60) {
+      return `${minutes} ${isOneMinute ? "minute" : "minutes"}`;
+    }
     const hours = Math.floor(minutes / 60);
     const isOneHour = hours === 1 ? true : false;
     return `${hours} ${isOneHour ? "hour" : "hours"}`;
@@ -30,11 +32,7 @@ const Home = () => {
             </div>
           ) : error ? (
             <div className="flex items-center justify-center p-8">
-              <p className="text-red-500">
-                {error instanceof Error
-                  ? error.message
-                  : "Une erreur est survenue"}
-              </p>
+              <p className="text-red-500">{error.message}</p>
             </div>
           ) : !data ? (
             <div className="flex items-center justify-center">

@@ -15,9 +15,9 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between px-8 py-4 border-b border-gray-200 gap-8">
       {/*LOGO*/}
-      <div className="text-2xl">
+      <Link to="/" className="text-2xl">
         Town <span className="text-blue-500">Library</span>
-      </div>
+      </Link>
 
       {/*SEARCH*/}
       <form
