@@ -22,32 +22,35 @@ const BookDetails = () => {
     );
   }
 
+  console.log(data)
 
   return <div>
     <p>{data?.title}</p>
     <p>{data?.description.value}</p>
-    {
+    <p>{data?.created.value}</p>
+    <p>{data?.last_modified.value}</p>
+    {data?.subjects && <>{
       // Genres du livre (drama, romance, policier etc...)
       data?.subjects.map((subject) => (
         <p>{subject}</p>
-      ))}
-    {
+      ))}</>}
+    {data?.subject_people && <>{
       // Personnages du livre
       data?.subject_people.map((subject_person) => (
         <p>{subject_person}</p>
-      ))}
-    {
+      ))}</>}
+    {data?.subject_places && <>{
       // Ville et Pays
       data?.subject_places.map((subject_place) => (
         <p>{subject_place}</p>
-      ))}
-    {
+      ))}</>}
+    {data?.subject_times && <>{
       // date (année uniquement)
       data?.subject_times.map((subject_time) => (
         <p>{subject_time}</p>
-      ))}
+      ))}</>}
 
-    {
+    {data?.excerpts && <>{
       // extraits d'auteur (requête(s) supplémentaire(s) pour obtenir les noms d'auteurs par leur clé ?)
       data?.excerpts.map((excerpt) => (
         <div>
@@ -55,15 +58,15 @@ const BookDetails = () => {
           <p>{excerpt.author.key}</p>
           <p>{excerpt.comment}</p>
         </div>
-      ))}
-    <p>{data?.created.value}</p>
-    <p>{data?.last_modified.value}</p>
-    {
-      // external links to the book
-      data?.links.map((link) => (
-        <a href={link.url}>{link.title}</a>
-      ))
-    }
+      ))}</>}
+    {data?.links && <>
+      {
+        // external links to the book
+        data?.links.map((link) => (
+          <a href={link.url}>{link.title}</a>
+        ))
+      }
+    </>}
 
   </div>;
 };
