@@ -6,7 +6,8 @@ interface BookWikiProps {
 }
 
 export const BookWiki = (props: BookWikiProps) => {
-    const { data, isLoading, error } = useBookWiki(`${props.author_name} ${props.book_title}`);
+    const { data, isLoading, error } = useBookWiki(`${props.book_title}`);
+    //const { data, isLoading, error } = useBookWiki(`${props.author_name} ${props.book_title}`);
 
     if (isLoading) {
         return (
