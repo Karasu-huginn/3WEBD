@@ -145,3 +145,19 @@ export interface BookDetails {
   created: Created
   last_modified: Created
 }
+
+export interface Thumbnail {
+  mimetype: string
+  width: number
+  height: number
+  url: string
+}
+
+export interface BookWikiInfos {
+  id: number
+  key: string
+  title: string
+  excerpt: string
+  description: string
+  thumbnail: Thumbnail
+}

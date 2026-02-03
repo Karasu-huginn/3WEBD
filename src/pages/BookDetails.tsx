@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router";
 import { useBookDetails } from "../hooks/useBookDetails";
+import { BookWiki } from "../components/BookWiki";
 
 const BookDetails = () => {
   const [searchParams] = useSearchParams();
@@ -22,7 +23,6 @@ const BookDetails = () => {
     );
   }
 
-  console.log(data)
 
   return <div>
     <p>{data?.title}</p>
@@ -67,7 +67,8 @@ const BookDetails = () => {
         ))
       }
     </>}
-
+    {data && <BookWiki author_name={data?.authors[0].key || ""} book_title={data?.title || ""} />}
+    {/* AUTHOR NEEDS CHANGE (KEY -> NAME) */}
   </div>;
 };
 
