@@ -1,13 +1,12 @@
 import { useBookWiki } from "../hooks/useBookWiki";
 
 interface BookWikiProps {
-    author_name: string;
-    book_title: string;
+    authorKey: string;
+    bookTitle: string;
 }
 
 export const BookWiki = (props: BookWikiProps) => {
-    const { data, isLoading, error } = useBookWiki(`${props.book_title}`);
-    //const { data, isLoading, error } = useBookWiki(`${props.author_name} ${props.book_title}`);
+    const { data, isLoading, error } = useBookWiki(props.bookTitle, props.authorKey);
 
     if (isLoading) {
         return (
@@ -24,6 +23,8 @@ export const BookWiki = (props: BookWikiProps) => {
             </div>
         );
     }
-
-    return <iframe src={`https://en.wikipedia.org/wiki/${data?.key}`}></iframe>
+    if (data) {
+        console.log(data?.pages[0].key)
+    }
+    return <iframe src={`https://en.wikipedia.org/wiki/${data?.pages[0].key}`}></iframe>
 }

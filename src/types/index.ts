@@ -161,3 +161,12 @@ export interface BookWikiInfos {
   description: string
   thumbnail: Thumbnail
 }
+
+export interface BookWikiInfosResponse {
+  pages: BookWikiInfos[]
+}
+
+export interface AuthorDetails {
+  fuller_name: string
+  name: string
+}

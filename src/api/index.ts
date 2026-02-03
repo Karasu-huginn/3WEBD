@@ -1,4 +1,4 @@
-import type { Book, BookDetails, BookWikiInfos, RecentChange, SearchBooks } from "../types";
+import type { AuthorDetails, Book, BookDetails, BookWikiInfosResponse, RecentChange, SearchBooks } from "../types";
 import { fetchAPI, fetchWiki } from "./client";
 
 export function getRecentChanges(limit: number = 10): Promise<RecentChange[]> {
@@ -17,6 +17,10 @@ export function getBookDetails(query: string): Promise<BookDetails> {
   return fetchAPI(`/works/${query}.json`);
 }
 
-export function getBookWiki(query: string): Promise<BookWikiInfos> {
+export function getBookWiki(query: string): Promise<BookWikiInfosResponse> {
   return fetchWiki(`/v1/search/page?q=${encodeURIComponent(query)}`);
+}
+
+export function getAuthorDetails(authorKey: string): Promise<AuthorDetails> {
+  return fetchAPI(`/authors/${authorKey}.json`);
 }
