@@ -27,7 +27,7 @@ export const BookWiki = (props: BookWikiProps) => {
 
   return (
     <iframe
-      className="border border-gray-300 rounded-2xl p-5 w-2/5"
+      className="border border-gray-300 rounded-2xl p-5 w-1/2 h-screen"
       src={`https://en.wikipedia.org/wiki/${data?.key}`}
     ></iframe>
   );
