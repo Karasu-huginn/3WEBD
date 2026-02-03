@@ -8,7 +8,6 @@ describe("filterFields", () => {
   });
 
   it("chaque champ a name, label et placeholder", () => {
-    // Parcourt chaque champ et vérifie ses propriétés
     filterFields.forEach((field) => {
       expect(field).toHaveProperty("name");
       expect(field).toHaveProperty("label");
@@ -17,10 +16,8 @@ describe("filterFields", () => {
   });
 
   it("contient les champs essentiels title, author, isbn", () => {
-    // Récupère juste les noms des champs
     const fieldNames = filterFields.map((f) => f.name);
 
-    // Vérifie que ces noms sont présents
     expect(fieldNames).toContain("title");
     expect(fieldNames).toContain("author");
     expect(fieldNames).toContain("isbn");

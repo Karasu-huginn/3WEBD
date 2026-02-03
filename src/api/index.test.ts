@@ -21,13 +21,11 @@ describe("API Functions", () => {
 
       await getSearchBooks("Harry Potter & l'école");
 
-      // Vérifie que l'URL est correctement encodée
-      // Note: encodeURIComponent garde l'apostrophe ' non-encodée
       expect(fetchSpy).toHaveBeenCalledWith(
         expect.stringContaining("Harry%20Potter%20%26%20l'%C3%A9cole"),
       );
     });
-
+    // Vérifier que les résultats sont bien retournés
     it("retourne les résultats de recherche", async () => {
       const mockData = {
         docs: [{ title: "Test Book", key: "/works/OL123W" }],

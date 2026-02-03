@@ -1,11 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { timeAgo } from "./timeAgo";
 
-// describe = groupe de tests pour une fonctionnalité
 describe("timeAgo", () => {
-  // it = un test individuel
   it("retourne '1 minute' pour il y a 1 minute", () => {
-    // Crée une date d'il y a 1 minute (60000 ms = 1 min)
     const oneMinuteAgo = new Date(Date.now() - 60000).toISOString();
 
     // expect = vérifie que le résultat est correct

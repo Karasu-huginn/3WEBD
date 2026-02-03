@@ -3,9 +3,8 @@ import { fetchAPI, fetchWiki } from "./client";
 
 describe("fetchAPI", () => {
   it("lance une erreur si la requête échoue", async () => {
-    // vi.spyOn = on "espionne" fetch pour simuler une réponse
     vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
-      ok: false, // Simule une erreur HTTP
+      ok: false,
       status: 404,
     } as Response);
 
