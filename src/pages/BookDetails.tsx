@@ -21,9 +21,6 @@ const BookDetails = () => {
       </div>
     );
   }
-
-  console.log(data);
-
   return (
     <div>
       <p>{data?.title}</p>
