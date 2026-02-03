@@ -23,8 +23,8 @@ const BookDetails = () => {
     );
   }
   return (
-    <div className="flex md:px-20 md:py-10 px-15 py-5">
-      <div className="w-1/2 px-10 py-5 border border-gray-300 rounded-2xl mr-5">
+    <div className="flex flex-col md:flex-row md:px-20 md:py-10 px-15 py-5">
+      <div className="w-full md:w-1/2 px-10 py-5 border border-gray-300 rounded-2xl md:mr-5 mb-5 md:mb-0">
         <h1 className="text-2xl font-bold">{data?.title}</h1>
         <p className="mb-1 overflow-hidden">{data?.description?.value}</p>
         <p>
@@ -46,14 +46,14 @@ const BookDetails = () => {
             {data?.subjects && (
               <>
                 {// Genres du livre (drama, romance, policier etc...)
-                  data?.subjects.map((subject) => (
-                    <p
-                      key={subject}
-                      className="bg-blue-100 hover:bg-blue-200 text-blue-800 px-4 rounded-3xl font-medium inline-block"
-                    >
-                      {subject}
-                    </p>
-                  ))}
+                data?.subjects.map((subject) => (
+                  <p
+                    key={subject}
+                    className="bg-blue-100 hover:bg-blue-200 text-blue-800 px-4 rounded-3xl font-medium inline-block"
+                  >
+                    {subject}
+                  </p>
+                ))}
               </>
             )}
           </div>
@@ -68,14 +68,14 @@ const BookDetails = () => {
               </h2>
               <div className="flex flex-wrap gap-2">
                 {// Personnages du livre
-                  data?.subject_people.map((subject_person) => (
-                    <p
-                      className="bg-purple-100 hover:bg-purple-200 text-blue-800 px-4 rounded-3xl font-medium inline-block"
-                      key={subject_person}
-                    >
-                      {subject_person}
-                    </p>
-                  ))}
+                data?.subject_people.map((subject_person) => (
+                  <p
+                    className="bg-purple-100 hover:bg-purple-200 text-blue-800 px-4 rounded-3xl font-medium inline-block"
+                    key={subject_person}
+                  >
+                    {subject_person}
+                  </p>
+                ))}
               </div>
             </>
           )}
@@ -88,14 +88,14 @@ const BookDetails = () => {
               <h2 className="text-xl font-medium text-gray-800 mb-2">Places</h2>
               <div className="flex flex-wrap gap-2">
                 {// Ville et Pays
-                  data?.subject_places.map((subject_place) => (
-                    <p
-                      className="bg-purple-100 hover:bg-purple-200 text-purple-800 px-4 rounded-3xl font-medium inline-block"
-                      key={subject_place}
-                    >
-                      {subject_place}
-                    </p>
-                  ))}
+                data?.subject_places.map((subject_place) => (
+                  <p
+                    className="bg-purple-100 hover:bg-purple-200 text-purple-800 px-4 rounded-3xl font-medium inline-block"
+                    key={subject_place}
+                  >
+                    {subject_place}
+                  </p>
+                ))}
               </div>
             </>
           )}
@@ -105,9 +105,9 @@ const BookDetails = () => {
         {data?.subject_times && (
           <>
             {// date (année uniquement)
-              data?.subject_times.map((subject_time) => (
-                <p key={subject_time}>{subject_time}</p>
-              ))}
+            data?.subject_times.map((subject_time) => (
+              <p key={subject_time}>{subject_time}</p>
+            ))}
           </>
         )}
 
@@ -115,24 +115,24 @@ const BookDetails = () => {
         {data?.excerpts && (
           <>
             {// extraits d'auteur (requête(s) supplémentaire(s) pour obtenir les noms d'auteurs par leur clé ?)
-              data?.excerpts.map((excerpt) => (
-                <div key={excerpt.excerpt}>
-                  <p>{excerpt.excerpt}</p>
-                  <p>{excerpt.author.key}</p>
-                  <p>{excerpt.comment}</p>
-                </div>
-              ))}
+            data?.excerpts.map((excerpt) => (
+              <div key={excerpt.excerpt}>
+                <p>{excerpt.excerpt}</p>
+                <p>{excerpt.author.key}</p>
+                <p>{excerpt.comment}</p>
+              </div>
+            ))}
           </>
         )}
         {/**LINKS */}
         {data?.links && (
           <>
             {// external links to the book
-              data?.links.map((link) => (
-                <a key={link.url} href={link.url}>
-                  {link.title}
-                </a>
-              ))}
+            data?.links.map((link) => (
+              <a key={link.url} href={link.url}>
+                {link.title}
+              </a>
+            ))}
           </>
         )}
       </div>
