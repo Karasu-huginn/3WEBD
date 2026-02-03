@@ -1,3 +1,4 @@
+// Fields for advanced search filters
 export const filterFields = [
   { name: "title", label: "Title", placeholder: "e.g., Naruto" },
   {

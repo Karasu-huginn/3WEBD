@@ -1,3 +1,4 @@
+//Returns a string with the time in minutes or hours of a timestamp
 export const timeAgo = (timestamp: string) => {
   const minutes = Math.floor(
     (new Date().getTime() - new Date(timestamp).getTime()) / 60000,
