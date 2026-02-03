@@ -23,8 +23,6 @@ export const BookWiki = (props: BookWikiProps) => {
             </div>
         );
     }
-    if (data) {
-        console.log(data?.pages[0].key)
-    }
-    return <iframe src={`https://en.wikipedia.org/wiki/${data?.pages[0].key}`}></iframe>
+
+    return <iframe src={`https://en.wikipedia.org/wiki/${data?.key}`}></iframe>
 }

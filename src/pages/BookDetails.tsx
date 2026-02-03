@@ -24,9 +24,9 @@ const BookDetails = () => {
   }
   return (
     <div className="flex md:px-20 md:py-10 px-15 py-5">
-      <div className="w-3/5 px-10 py-5 border border-gray-300 rounded-2xl">
+      <div className="w-1/2 px-10 py-5 border border-gray-300 rounded-2xl mr-5">
         <h1 className="text-2xl font-bold">{data?.title}</h1>
-        <p className="mb-1 overflow-hidden">{data?.description.value}</p>
+        <p className="mb-1 overflow-hidden">{data?.description?.value}</p>
         <p>
           Created:{" "}
           {data?.created?.value
@@ -136,10 +136,10 @@ const BookDetails = () => {
           </>
         )}
       </div>
-      <div className="w-2/5  px-15 py-5 border border-gray-300 rounded-2xl ml-5">
+      {/**<div className="w-2/5  px-15 py-5 border border-gray-300 rounded-2xl ml-5">
         <h2 className="text-xl font-bold">Wikipedia</h2>
         <p>Information on the book from Wikipedia</p>
-      </div>
+      </div>*/}
 
       {data && (
         <BookWiki
