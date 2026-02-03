@@ -4,6 +4,7 @@ Application React + Vite + TypScript pour rechercher et afficher des livres.
 
 ## Architecture
 
+```
 src/
 ├── api/
 │ ├── client.ts
@@ -15,6 +16,7 @@ src/
 ├── utils/
 ├─ App.tsx # Routeur
 └── index.css #tailwindcss
+```
 
 ## Installation
 
