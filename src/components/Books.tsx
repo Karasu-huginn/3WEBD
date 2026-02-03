@@ -48,8 +48,9 @@ const Books = (props: BooksProps) => {
             key={book.key}
             className="border border-gray-400 rounded-lg p-4 hover:shadow-gray-200 hover:shadow-lg"
           >
-            <Link to={`/book/?key=${book.key.substring(7)}`}>
-
+            <Link
+              to={`/book/?key=${book.key.substring(7)}&author=${book.author_name ? book.author_name[0] : ""}&title=${encodeURIComponent(book.title)}`}
+            >
               <div className="flex gap-4">
                 {book.cover_i ? (
                   <img

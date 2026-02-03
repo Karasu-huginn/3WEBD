@@ -1,14 +1,14 @@
 import { useBookWiki } from "../hooks/useBookWiki";
 
 interface BookWikiProps {
-  authorKey: string;
+  authorName: string;
   bookTitle: string;
 }
 
 export const BookWiki = (props: BookWikiProps) => {
   const { data, isLoading, error } = useBookWiki(
     props.bookTitle,
-    props.authorKey,
+    props.authorName,
   );
 
   if (isLoading) {

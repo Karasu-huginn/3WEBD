@@ -5,6 +5,7 @@ import { BookWiki } from "../components/BookWiki";
 const BookDetails = () => {
   const [searchParams] = useSearchParams();
   const key = searchParams.get("key") || "";
+  const author = searchParams.get("author") || "";
   const { data, isLoading, error } = useBookDetails(key);
 
   if (isLoading) {
@@ -141,12 +142,7 @@ const BookDetails = () => {
         <p>Information on the book from Wikipedia</p>
       </div>*/}
 
-      {data && (
-        <BookWiki
-          authorKey={data?.authors[0].key || ""}
-          bookTitle={data?.title || ""}
-        />
-      )}
+      {data && <BookWiki authorName={author} bookTitle={data?.title || ""} />}
     </div>
   );
 };
