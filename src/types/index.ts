@@ -114,3 +114,34 @@ export interface Created {
   type: string;
   value: string;
 }
+
+export interface Link {
+  title: string
+  url: string
+  type: Type
+}
+
+export interface Excerpt {
+  excerpt: string
+  author: Author
+  comment: string
+}
+
+export interface BookDetails {
+  description: Created
+  links: Link[]
+  title: string
+  covers: number[]
+  subject_places: string[]
+  subjects: string[]
+  subject_people: string[]
+  key: string
+  authors: Author[]
+  subject_times: string[]
+  type: Type;
+  excerpts: Excerpt[]
+  latest_revision: number
+  revision: number
+  created: Created
+  last_modified: Created
+}

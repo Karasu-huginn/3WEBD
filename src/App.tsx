@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import AdvancedSearch from "./pages/AdvancedSearch";
-import BookDetail from "./pages/BookDetail";
+import BookDetail from "./pages/BookDetails";
 import Search from "./pages/Search";
 
 function App() {

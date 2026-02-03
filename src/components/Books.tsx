@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useSearchBooks } from "../hooks/useSearchBooks";
 
 interface BooksProps {
@@ -47,39 +48,42 @@ const Books = (props: BooksProps) => {
             key={book.key}
             className="border border-gray-400 rounded-lg p-4 hover:shadow-gray-200 hover:shadow-lg"
           >
-            <div className="flex gap-4">
-              {book.cover_i ? (
-                <img
-                  src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-                  alt={book.title}
-                  className="w-24 h-32 object-cover rounded"
-                />
-              ) : (
-                <div className="w-24 h-32 bg-gray-200 rounded flex items-center justify-center text-gray-400">
-                  No cover
+            <Link to={`/book/?key=${book.key.substring(7)}`}>
+
+              <div className="flex gap-4">
+                {book.cover_i ? (
+                  <img
+                    src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
+                    alt={book.title}
+                    className="w-24 h-32 object-cover rounded"
+                  />
+                ) : (
+                  <div className="w-24 h-32 bg-gray-200 rounded flex items-center justify-center text-gray-400">
+                    No cover
+                  </div>
+                )}
+
+                <div className="flex-1">
+                  <h2 className="font-semibold text-lg mb-2">{book.title}</h2>
+
+                  {book.author_name && (
+                    <p className="text-sm text-gray-700 mb-1">
+                      By: {book.author_name[0]}
+                    </p>
+                  )}
+
+                  {book.first_publish_year && (
+                    <p className="text-xs text-gray-500">
+                      Published: {book.first_publish_year}
+                    </p>
+                  )}
+
+                  <p className="text-xs text-gray-500 mt-2">
+                    {book.edition_count} editions
+                  </p>
                 </div>
-              )}
-
-              <div className="flex-1">
-                <h2 className="font-semibold text-lg mb-2">{book.title}</h2>
-
-                {book.author_name && (
-                  <p className="text-sm text-gray-700 mb-1">
-                    By: {book.author_name[0]}
-                  </p>
-                )}
-
-                {book.first_publish_year && (
-                  <p className="text-xs text-gray-500">
-                    Published: {book.first_publish_year}
-                  </p>
-                )}
-
-                <p className="text-xs text-gray-500 mt-2">
-                  {book.edition_count} editions
-                </p>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>
